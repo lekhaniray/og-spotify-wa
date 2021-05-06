@@ -1,4 +1,8 @@
 from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import ElementClickInterceptedException
+from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 import unittest
 import datetime
@@ -30,8 +34,21 @@ class MyTestCase(unittest.TestCase):
         password.clear()
         password.send_keys("r@nd0m12345")
         self.driver.find_element_by_id("login-button").click()
+       
 
-        sleep(4)
+
+ #       self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[3]").click()
+        try:
+
+            button = self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[3]")
+            self.driver.execute_script("arguments[0].click();", button)
+            print("button clicked")
+
+        except ElementClickInterceptedException:
+            sleep(6)
+            print("Interception")
+        sleep(5)
+
 
 
 
