@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import ElementClickInterceptedException
 from selenium.webdriver.support import expected_conditions as EC
@@ -15,6 +16,7 @@ class MyTestCase(unittest.TestCase):
         self.driver = webdriver.Chrome(path)
         self.driver.implicitly_wait(30)
         self.driver.set_page_load_timeout(30)
+        action = ActionChains(self.driver)
         print("-------------------------------------------------------------")
         print("Test Environment created")
         print("Run started at:" + str(datetime.datetime.now()))
@@ -33,6 +35,16 @@ class MyTestCase(unittest.TestCase):
         except:
             print("pass")
             pass
+
+        try:
+            WebDriverWait(driver, 40).until(EC.alert_is_present(),
+            'Timed out waiting for PA creation ' +
+            'confirmation popup to appear.')
+            alert = self.driver.switch_to.alert()
+            alert.accept()
+
+        except:
+            print("Did not work")
 
         sleep(3)
 
@@ -54,17 +66,22 @@ class MyTestCase(unittest.TestCase):
         self.driver.find_element_by_id("login-button").click()
        
 
+        
+        play_button = self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[3]")
+        self.driver.execute_script("arguments[0].click();", play_button)
 
- #       self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[3]").click()
+#        forward_button = self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[4]/svg")
+#        self.driver.execute_script("arguments[0].click();", forward_button)
         
 
       
-        self.clearPopUps()
+ #       self.clearPopUps()
 
-        sleep(4)
-
-        button = self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[3]")
-        self.driver.execute_script("arguments[0].click();", button)
+#        action = webdriver.common.action_chains.ActionChains(driver)
+#        action.move_to_element_with_offset(el, 0, 0)
+#        action.click()
+#        action.perform()
+        
 
 
     def tearDown(self):
