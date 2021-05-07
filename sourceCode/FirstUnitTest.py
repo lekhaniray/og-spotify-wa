@@ -28,7 +28,7 @@ class MyTestCase(unittest.TestCase):
             pass 
         
         try:
-            alert = self.driver.switch_to_alert()
+            alert = self.driver.switch_to.alert()
             alert.dismiss()
         except:
             print("pass")
