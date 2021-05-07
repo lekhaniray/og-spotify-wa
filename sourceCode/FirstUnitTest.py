@@ -19,6 +19,24 @@ class MyTestCase(unittest.TestCase):
         print("Test Environment created")
         print("Run started at:" + str(datetime.datetime.now()))
 
+    def clearPopUps(self):
+        try:
+            sleep(2)
+            self.driver.find_element_by_xpath("/html/body/div[12]/div/div/div/div[2]/button[2]").click()
+        except:
+            print("No button")
+            pass 
+        
+        try:
+            alert = self.driver.switch_to_alert()
+            alert.dismiss()
+        except:
+            print("pass")
+            pass
+
+        sleep(3)
+
+
     def test_navigateSpotify(self):
 
         self.driver.get("https://www.spotify.com/us/")
@@ -38,21 +56,15 @@ class MyTestCase(unittest.TestCase):
 
 
  #       self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[3]").click()
-        try:
+        
 
-            button = self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[3]")
-            self.driver.execute_script("arguments[0].click();", button)
-            print("button clicked")
+      
+        self.clearPopUps()
 
-        except ElementClickInterceptedException:
-            sleep(6)
-            print("Interception")
-        sleep(5)
+        sleep(4)
 
-
-
-
-
+        button = self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[3]")
+        self.driver.execute_script("arguments[0].click();", button)
 
 
     def tearDown(self):
