@@ -51,10 +51,10 @@ class MyTestCase(unittest.TestCase):
 
     def test_navigateSpotify(self):
 
-        self.driver.get("https://www.spotify.com/us/")
+        self.driver.get("https://open.spotify.com/")
         print(self.driver.title)
         self.driver.maximize_window()
-        self.driver.find_element_by_link_text("Log in").click()
+        self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[1]/header/div[5]/button[2]").click()
         sleep(2)
         username = self.driver.find_element_by_id("login-username")
         username.clear()
@@ -64,11 +64,25 @@ class MyTestCase(unittest.TestCase):
         password.clear()
         password.send_keys("r@nd0m12345")
         self.driver.find_element_by_id("login-button").click()
+        sleep(5)
+
+        sleep(5)
+
+
+        #Wait for the cookie message
+        close_icon = WebDriverWait(self.driver, 5, 0.25).until(EC.visibility_of_element_located([By.XPATH, "//*[@id='onetrust-close-btn-container']/button"]))
+        close_icon.click()
+        #Wait for the cookie message to disappear
+        WebDriverWait(self.driver, 5, 0.25).until(EC.visibility_of_element_located([By.XPATH, "//*[@id='onetrust-close-btn-container']/button"]))
+        link = self.driver.find_element_by_xpath("//*[@id='onetrust-close-btn-container']/button")
+        link.click()
        
 
         
-        play_button = self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[3]")
-        self.driver.execute_script("arguments[0].click();", play_button)
+    #    play_button = self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[3]")
+    #    self.driver.execute_script("arguments[0].click();", play_button)
+        self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[3]").click()
+        sleep(10)
 
 #        forward_button = self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[4]/svg")
 #        self.driver.execute_script("arguments[0].click();", forward_button)
