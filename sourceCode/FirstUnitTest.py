@@ -86,6 +86,11 @@ class MyTestCase(unittest.TestCase):
         self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[4]").click()
         sleep(10)
 
+        search_field = self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/nav/div[1]/div[2]/div/div[1]/button").click()
+        sleep(10)
+        search_enter = self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[3]/main/div[2]/div[2]/div/div/div[2]/section/div[2]/div[3]/section/div/div/input")
+        search_enter.send_keys("Taylor Swift")
+        sleep(4)
 
 #        forward_button = self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[4]/svg")
 #        self.driver.execute_script("arguments[0].click();", forward_button)
