@@ -83,6 +83,9 @@ class MyTestCase(unittest.TestCase):
     #    self.driver.execute_script("arguments[0].click();", play_button)
         self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[3]").click()
         sleep(10)
+        self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[4]").click()
+        sleep(10)
+
 
 #        forward_button = self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[4]/svg")
 #        self.driver.execute_script("arguments[0].click();", forward_button)
