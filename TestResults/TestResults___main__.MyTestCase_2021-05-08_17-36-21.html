@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unittest Results</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-capitalize">Unittest Results</h2>
+                <p class='attribute'><strong>Start Time: </strong>2021-05-08 17:36:21</p>
+                <p class='attribute'><strong>Duration: </strong>58.97 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 6, Pass: 0, Error: 6</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>__main__.MyTestCase</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_MusicPlayer</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>-------------------------------------------------------------
+Test Environment created
+Run started at:2021-05-08 17:36:22.847281
+-------------------------------------------------------
+Test Environment Destroyed
+Run completed at :2021-05-08 17:36:29.398941
+</p><p style="color:maroon;">AttributeError: 'NoneType' object has no attribute 'click'</p><p style="color:maroon;">Traceback (most recent call last):
+  File "FirstUnitTest.py", line 86, in test_MusicPlayer
+    self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[3]").click()
+AttributeError: 'NoneType' object has no attribute 'click'
+</p>
+                            </td>
+                        </tr>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_MusicPlayer</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>-------------------------------------------------------------
+Test Environment created
+Run started at:2021-05-08 17:36:22.847281
+-------------------------------------------------------
+Test Environment Destroyed
+Run completed at :2021-05-08 17:36:29.398941
+</p><p style="color:maroon;">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=90.0.4430.93)
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "FirstUnitTest.py", line 117, in tearDown
+    self.driver.close()
+  File "/home/lekhaniray/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 688, in close
+    self.execute(Command.CLOSE)
+  File "/home/lekhaniray/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/home/lekhaniray/.local/lib/python3.6/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+  (Session info: chrome=90.0.4430.93)
+
+</p>
+                            </td>
+                        </tr>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_SearchFunction</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>-------------------------------------------------------------
+Test Environment created
+Run started at:2021-05-08 17:36:30.689030
+-------------------------------------------------------
+Test Environment Destroyed
+Run completed at :2021-05-08 17:36:47.198371
+</p><p style="color:maroon;">AttributeError: 'NoneType' object has no attribute 'click'</p><p style="color:maroon;">Traceback (most recent call last):
+  File "FirstUnitTest.py", line 92, in test_SearchFunction
+    search_field = self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/nav/div[1]/div[2]/div/div[1]/button").click()
+AttributeError: 'NoneType' object has no attribute 'click'
+</p>
+                            </td>
+                        </tr>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_SearchFunction</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>-------------------------------------------------------------
+Test Environment created
+Run started at:2021-05-08 17:36:30.689030
+-------------------------------------------------------
+Test Environment Destroyed
+Run completed at :2021-05-08 17:36:47.198371
+</p><p style="color:maroon;">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=90.0.4430.93)
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "FirstUnitTest.py", line 117, in tearDown
+    self.driver.close()
+  File "/home/lekhaniray/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 688, in close
+    self.execute(Command.CLOSE)
+  File "/home/lekhaniray/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/home/lekhaniray/.local/lib/python3.6/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+  (Session info: chrome=90.0.4430.93)
+
+</p>
+                            </td>
+                        </tr>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_loginSpotify</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>-------------------------------------------------------------
+Test Environment created
+Run started at:2021-05-08 17:36:48.552626
+-------------------------------------------------------
+Test Environment Destroyed
+Run completed at :2021-05-08 17:36:48.816056
+</p><p style="color:maroon;">WebDriverException: Message: unknown error: net::ERR_INTERNET_DISCONNECTED
+  (Session info: chrome=90.0.4430.93)
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "FirstUnitTest.py", line 55, in test_loginSpotify
+    self.driver.get("https://open.spotify.com/")
+  File "/home/lekhaniray/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "/home/lekhaniray/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/home/lekhaniray/.local/lib/python3.6/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: net::ERR_INTERNET_DISCONNECTED
+  (Session info: chrome=90.0.4430.93)
+
+</p>
+                            </td>
+                        </tr>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_removeCookiePolicy</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>-------------------------------------------------------------
+Test Environment created
+Run started at:2021-05-08 17:36:50.191880
+-------------------------------------------------------
+Test Environment Destroyed
+Run completed at :2021-05-08 17:37:20.478804
+</p><p style="color:maroon;">TimeoutException: Message: 
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "FirstUnitTest.py", line 74, in test_removeCookiePolicy
+    close_icon = WebDriverWait(self.driver, 5, 0.25).until(EC.visibility_of_element_located([By.XPATH, "//*[@id='onetrust-close-btn-container']/button"]))
+  File "/home/lekhaniray/.local/lib/python3.6/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 6, Pass: 0, Error: 6 -- Duration: 58.97 s
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('td').on('click', '.btn', function(e){
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                var $this = $(this);
+                var $nextRow = $this.closest('tr').next('tr');
+                $nextRow.slideToggle("fast");
+                $this.text(function(i, text){
+                    if (text === 'View') {
+                        return 'Hide';
+                    } else {
+                        return 'View';
+                    };
+                });
+            });
+        });
+    </script>
+</body>
+</html

@@ -1,4 +1,5 @@
 from selenium import webdriver
+import HtmlTestRunner
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
@@ -7,13 +8,20 @@ from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 import unittest
 import datetime
+from pages.account_page_spotify import AccountPage
+from pages.login_spotify import LoginPage
+from pages.homePage_spotify import HomePage
+from pages.search_page import searchPage
 
 path = "/home/lekhaniray/Downloads/chromedriver_linux64/chromedriver"
+base_url = "https://open.spotify.com/"
+
 
 class MyTestCase(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Chrome(path)
+        self.driver.maximize_window()
         self.driver.implicitly_wait(30)
         self.driver.set_page_load_timeout(30)
         action = ActionChains(self.driver)
@@ -21,93 +29,37 @@ class MyTestCase(unittest.TestCase):
         print("Test Environment created")
         print("Run started at:" + str(datetime.datetime.now()))
 
-    def clearPopUps(self):
-        try:
-            sleep(2)
-            self.driver.find_element_by_xpath("/html/body/div[12]/div/div/div/div[2]/button[2]").click()
-        except:
-            print("No button")
-            pass 
-        
-        try:
-            alert = self.driver.switch_to.alert()
-            alert.dismiss()
-        except:
-            print("pass")
-            pass
 
-        try:
-            WebDriverWait(driver, 40).until(EC.alert_is_present(),
-            'Timed out waiting for PA creation ' +
-            'confirmation popup to appear.')
-            alert = self.driver.switch_to.alert()
-            alert.accept()
+    def test_loginSpotify(self):
 
-        except:
-            print("Did not work")
+        driver = self.driver
 
-        sleep(3)
-
-
-    def test_navigateSpotify(self):
-
-        self.driver.get("https://open.spotify.com/")
+        self.driver.get(base_url)
+        self.assertIn("Spotify", driver.title)
         print(self.driver.title)
-        self.driver.maximize_window()
-        self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[1]/header/div[5]/button[2]").click()
-        sleep(2)
-        username = self.driver.find_element_by_id("login-username")
-        username.clear()
-        username.send_keys("lekhaniray@yahoo.com")
 
-        password = self.driver.find_element_by_id("login-password")
-        password.clear()
-        password.send_keys("r@nd0m12345")
-        self.driver.find_element_by_id("login-button").click()
+        home_page = HomePage(driver)
+        home_page.click_homepage_login()
+
+        login = LoginPage(driver)
+        login.enter_username("lekhaniray@yahoo.com")
+        login.enter_password("r@nd0m12345")
+        login.click_login()
+
+        account_page_actions = AccountPage(driver)
+        account_page_actions.remove_cookie_policy()
+        account_page_actions.musicPlayer_components()
+        account_page_actions.search_function()
         
 
-        
-
-
-        #Wait for the cookie message
-        close_icon = WebDriverWait(self.driver, 5, 0.25).until(EC.visibility_of_element_located([By.XPATH, "//*[@id='onetrust-close-btn-container']/button"]))
-        close_icon.click()
-        #Wait for the cookie message to disappear
-        WebDriverWait(self.driver, 5, 0.25).until(EC.visibility_of_element_located([By.XPATH, "//*[@id='onetrust-close-btn-container']/button"]))
-        link = self.driver.find_element_by_xpath("//*[@id='onetrust-close-btn-container']/button")
-        link.click()
-       
-
-        
-    #    play_button = self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[3]")
-    #    self.driver.execute_script("arguments[0].click();", play_button)
-        self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[3]").click()
-        sleep(10)
-        self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[4]").click()
+        search_page = searchPage(driver)
+        search_page.search_song("Taylor Swift")
         sleep(10)
 
-        search_field = self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/nav/div[1]/div[2]/div/div[1]/button").click()
-        
-        search_enter = self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[3]/main/div[2]/div[2]/div/div/div[2]/section/div[2]/div[3]/section/div/div/input")
-        search_enter.send_keys("Taylor Swift")
-        sleep(4)
-
-#        forward_button = self.driver.find_element_by_xpath("//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[4]/svg")
-#        self.driver.execute_script("arguments[0].click();", forward_button)
-        
-
-      
- #       self.clearPopUps()
-
-#        action = webdriver.common.action_chains.ActionChains(driver)
-#        action.move_to_element_with_offset(el, 0, 0)
-#        action.click()
-#        action.perform()
-        
 
 
     def tearDown(self):
-        if(self.driver!= None):
+        if(self.driver != None):
             print("-------------------------------------------------------")
             print("Test Environment Destroyed")
             print("Run completed at :" + str(datetime.datetime.now()))
@@ -115,4 +67,4 @@ class MyTestCase(unittest.TestCase):
             self.driver.quit()
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(testRunner= HtmlTestRunner.HTMLTestRunner(output= '/home/lekhaniray/spotify-wa-project/TestResults'))
