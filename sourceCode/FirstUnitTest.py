@@ -48,7 +48,14 @@ class MyTestCase(unittest.TestCase):
 
         account_page_actions = AccountPage(driver)
         account_page_actions.remove_cookie_policy()
-        account_page_actions.musicPlayer_components()
+        account_page_actions.musicPlayer_play()
+        sleep(10)
+        account_page_actions.musicPlayer_next()
+        sleep(10)
+        account_page_actions.musicPlayer_previous()
+        sleep(10)
+        account_page_actions.musicPlayer_enableShuffle()
+        account_page_actions.musicPlayer_enableRepeat()
         account_page_actions.search_function()
         
 

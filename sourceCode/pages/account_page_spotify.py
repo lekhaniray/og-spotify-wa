@@ -12,6 +12,9 @@ class AccountPage():
         self.policy_close_button_xpath = "//*[@id='onetrust-close-btn-container']/button"
         self.music_play_button_xpath = "//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[3]"
         self.music_next_button_xpath = "//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[4]"
+        self.music_previous_button_xpath = "//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[2]"
+        self.music_shuffle_button_xpath = "//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[1]"
+        self.music_repeat_button_xpath = "//*[@id='main']/div/div[2]/div[2]/footer/div/div[2]/div/div[1]/button[5]"
         self.music_search_xpath = "//*[@id='main']/div/div[2]/nav/div[1]/div[2]/div/div[1]/button"
 
 
@@ -24,11 +27,23 @@ class AccountPage():
         link = self.driver.find_element_by_xpath(self.policy_close_button_xpath)
         link.click()
 
-    def musicPlayer_components(self):
+    def musicPlayer_play(self):
         self.driver.find_element_by_xpath(self.music_play_button_xpath).click()
-        sleep(10)
+        
+
+    def musicPlayer_next(self):
         self.driver.find_element_by_xpath(self.music_next_button_xpath).click()
-        sleep(10)
+        
+    
+    def musicPlayer_previous(self):
+        self.driver.find_element_by_xpath(self.music_previous_button_xpath).click()
+
+    def musicPlayer_enableShuffle(self):
+        self.driver.find_element_by_xpath(self.music_shuffle_button_xpath).click()
+
+
+    def musicPlayer_enableRepeat(self):
+        self.driver.find_element_by_xpath(self.music_repeat_button_xpath).click()
 
     def search_function(self):
         self.driver.find_element_by_xpath(self.music_search_xpath).click()
